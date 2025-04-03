@@ -1,0 +1,7 @@
+{"level":"debug","source":"server","source":"PHP","time":"2025-04-03T11:04:07Z","message":"Reloading PHP versions"}
+{"level":"debug","source":"server","source":"PHP","time":"2025-04-03T11:04:07Z","message":"Using PHP version 8.0.30 (from default version in $PATH)"}
+{"level":"info","source":"server","source":"PHP","php":"8.0.30","path":"/usr/local/sbin/php-fpm","port":34705,"time":"2025-04-03T11:04:07Z","message":"listening"}
+{"level":"debug","source":"server","source":"PHP","php":"8.0.30","path":"/usr/local/sbin/php-fpm","source":"PHP","time":"2025-04-03T11:04:07Z","message":"Using PHP version 8.0.30 (from default version in $PATH)"}
+{"level":"debug","source":"server","source":"PHP","php":"8.0.30","path":"/usr/local/sbin/php-fpm","dir":"/var/www/.symfony5/tmp","time":"2025-04-03T11:05:02Z","message":"Starting temporary directory cleanup..."}
+{"level":"debug","source":"server","source":"PHP","php":"8.0.30","path":"/usr/local/sbin/php-fpm","dir":"/var/www/.symfony5/tmp","entry":"cvn6m9v2b6lqg32bhrkg","cutoff":"2025-03-27T11:05:02.371872459Z","time":"2025-04-03T11:05:02Z","message":"entry is more recent than cutoff, keeping it for now"}
+{"level":"debug","source":"server","source":"PHP","php":"8.0.30","path":"/usr/local/sbin/php-fpm","dir":"/var/www/.symfony5/tmp","time":"2025-04-03T11:05:02Z","message":"Cleaning is done..."}

@@ -1,0 +1,6 @@
+[03-Apr-2025 11:04:07] NOTICE: fpm is running, pid 31
+[03-Apr-2025 11:04:07] NOTICE: ready to handle connections
+[03-Apr-2025 11:05:02] NOTICE: Terminating ...
+[03-Apr-2025 11:05:02] NOTICE: exiting, bye-bye!
+"message":"Received timer message (first boot)"}
+{"level":"info","source":"runner","cmd":"PHP-FPM","time":"2025-04-03T11:05:02Z","message":"Signal \"interrupt\" received, forwarding and exiting\n"}
