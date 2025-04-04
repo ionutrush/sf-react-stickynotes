@@ -20,5 +20,9 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver:
+        alias: 'argument_resolver.request_payload'
+        public: true
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
