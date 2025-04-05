@@ -7,11 +7,28 @@ use App\Repository\UserRepository;
 
 class UserService
 {
-    public function __construct(private UserRepository $userRepository) {}
+    public function __construct(
+        private UserRepository $userRepository
+    ) {}
 
-    public function login(string $email, string $password)
+    public function login(string $email, string $password): User
     {
 
+        // Fetch the user by email
+        $user = $this->findOneByEmail($email);
+
+        // Check if the user exists
+        if (!$user) {
+            throw new \Exception('Invalid email or password.');
+        }
+
+        // Verify the password
+        if (!password_verify($password, $user->getPassword())) {
+            throw new \Exception('Invalid email or password.');
+        }
+
+        // Return the authenticated user
+        return $user;
     }
 
     public function register(string $email, string $password): User

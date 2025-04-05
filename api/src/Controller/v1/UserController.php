@@ -5,6 +5,7 @@ namespace App\Controller\v1;
 use App\DTO\UserRegistrationRequest;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -19,11 +20,11 @@ final class UserController extends AbstractController {
     {
     }
 
-    #[Route('/v1/register', name: 'app_v1_register', methods: ['POST'])]
+    #[Route('/api/v1/register', name: 'app_v1_register', methods: ['POST'])]
     public function register(#[MapRequestPayload] UserRegistrationRequest $registrationData): JsonResponse
     {
         try {
-            $user = $this->userService->register($registrationData->getEmail(), $registrationData->getPassword());
+            $user = $this->userService->register($registrationData->email, $registrationData->password);
 
             return $this->json([
                 'id' => $user->getId(),
@@ -35,5 +36,13 @@ final class UserController extends AbstractController {
                 'error' => $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    #[Route('/api/v1/user', name: 'app_v1_current_user', methods: ['GET'])]
+    public function getCurrentUser(Security $security): JsonResponse
+    {
+        $user = $security->getUser();
+
+        return $this->json($user);
     }
 }
