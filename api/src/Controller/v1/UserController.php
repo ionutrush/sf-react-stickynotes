@@ -5,15 +5,12 @@ namespace App\Controller\v1;
 use App\DTO\UserRegistrationRequest;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 
 final class UserController extends AbstractController {
-
-
     public function __construct(
         private UserService $userService
     )
@@ -39,10 +36,8 @@ final class UserController extends AbstractController {
     }
 
     #[Route('/api/v1/user', name: 'app_v1_current_user', methods: ['GET'])]
-    public function getCurrentUser(Security $security): JsonResponse
+    public function getCurrentUser(): JsonResponse
     {
-        $user = $security->getUser();
-
-        return $this->json($user);
+        return $this->json($this->getUser());
     }
 }
