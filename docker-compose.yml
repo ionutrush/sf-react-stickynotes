@@ -15,7 +15,7 @@ services:
       - ./api:/var/www
     environment:
       PHP_INI_SCAN_DIR: ":/usr/local/etc/php/custom"
-      PHP_INI_DIRECTIVES: "short_open_tag=Off"
+      PHP_INI_DIRECTIVES: "short_open_tag=Off; memory_limit=4G;"
     depends_on:
       - database
     networks:
@@ -63,6 +63,15 @@ services:
 networks:
   backend-network:
   frontend-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
 
 volumes:
   db-data:
+  api:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD
+      o: bind
