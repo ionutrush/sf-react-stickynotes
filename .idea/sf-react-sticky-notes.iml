@@ -103,6 +103,9 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/var-exporter" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/behat/transliterator" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/gedmo/doctrine-extensions" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/stof/doctrine-extensions-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

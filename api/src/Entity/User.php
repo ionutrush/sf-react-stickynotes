@@ -17,8 +17,7 @@ class User implements UserInterface, JsonSerializable, PasswordAuthenticatedUser
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
-    #[Unique]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]

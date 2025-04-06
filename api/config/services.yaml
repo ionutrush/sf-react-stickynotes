@@ -24,5 +24,13 @@ services:
         alias: 'argument_resolver.request_payload'
         public: true
 
+    gedmo.listener.blameable:
+        class: Gedmo\Blameable\BlameableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setUserValue, [ '@security.token_storage' ] ]
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
