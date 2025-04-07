@@ -16,8 +16,9 @@ class UpdateStickyNoteRequest
         #[Assert\Length(max: 20)]
         public string $position,
 
-        
         public ?string $body,
+
+        public ?array $tags,
     )
     {
     }

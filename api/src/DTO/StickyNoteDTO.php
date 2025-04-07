@@ -15,13 +15,9 @@ class StickyNoteDTO
 
     public ?string $body;
 
-//    public string $createdAt;
-//
-//    public string $updatedAt;
-//
-//    public string $createdBy;
-//
-//    public string $updatedBy;
+    public ?array $tags;
+    public string $createdAt;
+    public string $author;
     
     public function __construct(
         StickyNote $stickyNote
@@ -30,9 +26,13 @@ class StickyNoteDTO
         $this->color = $stickyNote->getColor();
         $this->position = $stickyNote->getPosition();
         $this->body = $stickyNote->getBody();
-//        $this->createdAt = $stickyNote->getCreatedAt()->format('Y-m-d H:i:s');
-//        $this->updatedAt = $stickyNote->getUpdatedAt()->format('Y-m-d H:i:s');
-//        $this->createdBy = $stickyNote->getCreatedBy();
-//        $this->updatedBy = $stickyNote->getUpdatedBy();
+        $this->tags = array_map(
+            fn($tag) => $tag->getName(),
+            $stickyNote
+                ->getTags()
+                ->toArray()
+        );
+        $this->createdAt = $stickyNote->getCreatedAt()->format('Y-m-d H:i:s');
+        $this->author = $stickyNote->getCreatedBy();
     }
 }

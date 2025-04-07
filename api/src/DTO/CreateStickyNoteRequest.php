@@ -18,6 +18,8 @@ class CreateStickyNoteRequest
 
         
         public ?string $body,
+
+        public ?array $tags,
     )
     {
     }

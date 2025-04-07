@@ -34,11 +34,11 @@ final class StickyNoteController extends AbstractController {
     public function create(#[MapRequestPayload] CreateStickyNoteRequest $request): JsonResponse
     {
         try {
-            $note = $this->service->create($request->color, $request->position, $request->body);
+            $note = $this->service->create($request->color, $request->position, $request->body, $request->tags);
 
             return $this->json(
                 new StickyNoteDTO($note),
-                Response::HTTP_CREATED
+                Response::HTTP_CREATED,
             );
         } catch (\Exception $e) {
             return $this->json(
@@ -61,7 +61,8 @@ final class StickyNoteController extends AbstractController {
         $this->denyAccessUnlessGranted(StickyNoteVoter::EDIT, $note);
 
         try {
-            $note = $this->service->update($note, $request->color, $request->position, $request->body);
+            $note->clearTags();
+            $note = $this->service->update($note, $request->color, $request->position, $request->body, $request->tags);
             return $this->json(
                 new StickyNoteDTO($note),
                 Response::HTTP_OK
