@@ -6,11 +6,6 @@ services:
     build:
       context: ./docker
       dockerfile: Dockerfile.php
-    deploy:
-      resources:
-        limits:
-          cpus: "16"
-          memory: 16G
     volumes:
       - ./api:/var/www
     environment:

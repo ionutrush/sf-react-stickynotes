@@ -16,28 +16,24 @@ class StickyNoteRepository extends ServiceEntityRepository
         parent::__construct($registry, StickyNote::class);
     }
 
-//    /**
-//     * @return StickyNote[] Returns an array of StickyNote objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function save(StickyNote $stickyNote, bool $flush = true): StickyNote
+    {
+        $this->getEntityManager()->persist($stickyNote);
 
-//    public function findOneBySomeField($value): ?StickyNote
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+
+        return $stickyNote;
+    }
+    
+    public function delete(StickyNote $stickyNote, bool $flush = true): void
+    {
+
+        $this->getEntityManager()->remove($stickyNote);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 }

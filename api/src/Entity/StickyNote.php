@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: StickyNoteRepository::class)]
 class StickyNote
@@ -20,6 +21,7 @@ class StickyNote
     private ?int $id = null;
 
     #[ORM\Column(length: 10)]
+    #[Assert\CssColor]
     private ?string $color = null;
 
     #[ORM\Column(length: 20)]
