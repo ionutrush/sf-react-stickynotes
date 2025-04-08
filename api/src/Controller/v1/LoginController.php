@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api/v1/')]
 final class LoginController extends AbstractController {
     
-    #[Route('api/v1/login', name: 'app_v1_login', methods: ['POST'])]
+    #[Route('login', name: 'app_v1_login', methods: ['POST'])]
     public function login(): JsonResponse
     {
         return $this->json([
@@ -17,9 +18,9 @@ final class LoginController extends AbstractController {
     }
     
 
-    #[Route('/api/v1/logout', name: 'app_v1_logout', methods: ['GET'])]
+    #[Route('logout', name: 'app_v1_logout', methods: ['GET'])]
     public function logout(): JsonResponse
     {
-        throw new \Exception('You should not be here');//@TODO:
+        throw new \Exception('You should not be here');
     }
 }

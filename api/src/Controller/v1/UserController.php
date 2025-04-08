@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 
+#[Route('/api/v1/')]
 final class UserController extends AbstractController {
     public function __construct(
         private UserService $userService
@@ -17,7 +18,7 @@ final class UserController extends AbstractController {
     {
     }
 
-    #[Route('/api/v1/register', name: 'app_v1_register', methods: ['POST'])]
+    #[Route('register', name: 'app_v1_register', methods: ['POST'])]
     public function register(#[MapRequestPayload] UserRegistrationRequest $registrationData): JsonResponse
     {
         try {
@@ -35,7 +36,7 @@ final class UserController extends AbstractController {
         }
     }
 
-    #[Route('/api/v1/user', name: 'app_v1_current_user', methods: ['GET'])]
+    #[Route('user', name: 'app_v1_current_user', methods: ['GET'])]
     public function getCurrentUser(): JsonResponse
     {
         return $this->json($this->getUser());
