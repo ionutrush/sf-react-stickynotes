@@ -2,6 +2,7 @@
 
 namespace App\Controller\v1;
 
+use App\DTO\UserDTO;
 use App\DTO\UserRegistrationRequest;
 use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,10 +25,10 @@ final class UserController extends AbstractController {
         try {
             $user = $this->userService->register($registrationData->email, $registrationData->password);
 
-            return $this->json([
-                'id' => $user->getId(),
-                'email' => $user->getEmail(),
-            ], Response::HTTP_CREATED);
+            return $this->json(
+                new UserDTO($user->getEmail()),
+                Response::HTTP_CREATED
+            );
         } catch (\Exception $e) {
             return $this->json([
                 'message' => 'Registration failed.',
@@ -39,6 +40,6 @@ final class UserController extends AbstractController {
     #[Route('user', name: 'app_v1_current_user', methods: ['GET'])]
     public function getCurrentUser(): JsonResponse
     {
-        return $this->json($this->getUser());
+        return $this->json(new UserDTO($this->getUser()->getEmail()));
     }
 }
